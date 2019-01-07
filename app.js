@@ -55,6 +55,19 @@ app.post("/blogs", function(req, res) {
     }
   });
 });
+
+//SHOW ROUTE
+app.get("/blogs/:id", function(req, res) {
+  //find blog with id
+  Blog.findById(req.params.id, function(err, foundBlog) {
+    if (err) {
+      res.redirect("/blogs");
+    } else {
+      //show blog with id
+      res.render("show", { blog: foundBlog });
+    }
+  });
+});
 app.listen(3000, function() {
   console.log("Server's up");
 });
