@@ -45,7 +45,16 @@ app.get("/blogs/new", function(req, res) {
 });
 
 //CREATE ROUTE
-
+app.post("/blogs", function(req, res) {
+  //create blog
+  Blog.create(req.body.blog, function(err, newblog) {
+    if (err) {
+      res.render("new");
+    } else {
+      res.redirect("/blogs");
+    }
+  });
+});
 app.listen(3000, function() {
   console.log("Server's up");
 });
