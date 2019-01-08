@@ -2,7 +2,11 @@
 
 <div class="ui main text container segment">
   <div class="ui huge header">Edit <%= blog.title %></div>
-  <form class="ui form" action="/blogs" method="post">
+  <form
+    class="ui form"
+    action="/blogs/<%= blog._id %>?_method=put"
+    method="post"
+  >
     <div class="field">
       <label>Title</label> <input type="text" name="blog[title]" value=<%=
       blog.title %> />
@@ -12,7 +16,8 @@
       blog.image %> />
     </div>
     <div class="field">
-      <label>Blog Content</label> <textarea><%= blog.body %></textarea>
+      <label>Blog Content</label>
+      <textarea name="blog[body]"><%= blog.body %></textarea>
     </div>
     <button class="ui positive basic button">Submit</button>
   </form>
